@@ -9,7 +9,7 @@ Conntector zum Anbinden der DPSG Mitgliederdatenbank an einen CardDav Server
 - Schreibrechte für tmp/ Ordner, zum Ablegen des NAMI Cookie
 
 ##Installation
-1. Ins Zielvrezeichnis gehen
+1. Ins Zielverzeichnis gehen
 2. Nami-CardDav-Connector von Github klonen
 3. Composer Packages installieren mit dem Befehl "composer install" installieren
 4. config.sample.php kopieren nach config.php

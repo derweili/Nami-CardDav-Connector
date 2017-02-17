@@ -14,6 +14,8 @@ Conntector zum Anbinden der DPSG Mitgliederdatenbank an einen CardDav Server
 3. Composer Packages installieren mit dem Befehl "composer install" installieren
 4. config.sample.php kopieren nach config.php
 5. Einstellungen und Zugangsdaten in config.php eintragen
+6. Import durch ausführen der import.php starten
+7. Wenn gewünscht, Cronjob einrichten, der automatisch die import.php ausführt.
 
 
 

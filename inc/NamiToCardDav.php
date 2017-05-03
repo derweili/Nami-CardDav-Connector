@@ -17,12 +17,18 @@ class Nami_To_Card_Dav
 	
 	function __construct( $credentials )
 	{
+        echo 'set credentials <br>';
 		$this->credentials = $credentials;
+        echo 'init_nami_connection <br>';
 		$this->init_nami_connection();
+        echo 'init_card_dav_backend <br>';
 		$this->init_card_dav_backend();
 
+        echo 'remove_all_contacts <br>';
 		$this->remove_all_contacts();
+        echo 'load_members_from_nami <br>';
 		$this->load_members_from_nami();
+        echo 'push_members_to_carddav <br>';
 		$this->push_members_to_carddav();
 	}
 
@@ -46,7 +52,7 @@ class Nami_To_Card_Dav
 		$this->carddav = new carddav_backend( $this->credentials["carddav_address"] );
 		$this->carddav->set_auth( $this->credentials["carddav_user"], $this->credentials["carddav_password"] );
 
-		var_dump($this->carddav->check_connection());
+		//var_dump($this->carddav->check_connection());
 	}
 
 
@@ -69,13 +75,17 @@ class Nami_To_Card_Dav
 	}
 
 	private function push_members_to_carddav() {
+        //var_dump($this->members[0]);
 		foreach ($this->members as $member) {
 
-			if ( "Mitglied" == $member["entries"]["mglType"] ) {
+			if ( "Mitglied" == $member["entries_mglType"] ) {
 
 				$new_member_vcard = $this->generate_vcard_from_member($member);
-
-				$this->carddav->add( $new_member_vcard );
+                echo 'svg card<br>';
+                var_dump($new_member_vcard);
+				$return = $this->carddav->add( $new_member_vcard );
+                //echo 'add card return';
+                var_dump($return);
 
 			}
 
@@ -85,7 +95,8 @@ class Nami_To_Card_Dav
 
 	private function generate_vcard_from_member( $member ) {
 		$detailed_memberdata = $this->nami->get_detailed_memberdata($member["id"]);
-
+        echo 'detailed data <br>';
+        var_dump($detailed_memberdata);
 		$bday = strtotime ( $detailed_memberdata["geburtsDatum"] );
 
 

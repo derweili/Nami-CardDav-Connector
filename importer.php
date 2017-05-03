@@ -10,4 +10,7 @@ include 'inc/NamiToCardDav.php';
 
 use Sabre\VObject;
 
+
+echo '<pre>';
+
 new Nami_To_Card_Dav( $settings_array );

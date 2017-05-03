@@ -141,7 +141,8 @@ class NamiConnector{
 		$result = $this->call_api("/ica/rest/nami/mitglied/filtered-for-navigation/gruppierung/gruppierung/". $this->gid ."/flist?_dc=1477420805317&page=1&start=0&limit=500&filterString=" . $filterString . "&searchString=" . $searchString);
 		//var_dump($result);
 		$response = $result;
-		var_dump($response);
+		//echo 'nami get_members response:';
+		//var_dump($response);
 		if ($response["responseType"] == "EXCEPTION") {echo $response["message"];} else {return $response["data"];}
 	}
 	
